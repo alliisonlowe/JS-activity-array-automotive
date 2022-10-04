@@ -13,12 +13,35 @@ class Car extends VehicleModule {
     }
 
 
-checkService() {
-    if (this.mileage > 3000) {
-        this.scheduleService = true;
-        return this.scheduleService;
+    checkService() {
+        if (this.mileage > 3000) {
+            this.scheduleService = true;
+            return this.scheduleService;
+        }
     }
-}
+
+    start() {
+        if (this.fuel > 10) {
+            console.log("engine has started...");
+            return this.started = true;
+        } else {
+            console.log("no fuel");
+            return this.started = false;
+        }
+    }
+
+    loadPassenger(num) {
+        if(this.passenger<this.maxPassengers){
+            if((num + this.passenger)<= this.maxPassengers){
+                this.passenger=num;
+                return this.passenger;
+            }else{
+                console.log(this.model + " "+ this.make + " does not have enought space to take all passengers.");
+            }
+        }else{
+            console.log(this.model + " "+this.make + " is full");
+        }
+    }
 
 }
 //this shows how to call from this module...
